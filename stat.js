@@ -39,4 +39,4 @@ module.exports.mean = mean;
 //         sum += arr[i];
 //     }
 //     return sum / arr.length;
-// };
+// }; 
