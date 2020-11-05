@@ -4,7 +4,7 @@
   "description": "this is my nodejs tutorial",
   "main": "nodejs_1.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon nodejs_11.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/5ohyun/nodejs#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
