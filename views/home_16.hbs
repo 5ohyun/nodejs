@@ -1,0 +1,66 @@
+{{!-- 
+form으로 delete 처리 불가
+
+jquery의 ajax를 이용해 delete request 보냄
+delete 버튼 만들어 주고 jquery를 layout.hbs에 불러와
+script를 넣어줌
+
+home.hbs에서 script를 작성해 단어 하나하나마다 x 버튼을 만들고
+단어 카드가 삭제되도록 함
+
+ --}}
+<div class="ui main text container">
+    <h1 class="ui header">Semantic UI Fixed Template</h1>
+    
+    <form method="POST" action="/">
+        <div class="ui action input fluid"> 
+            {{!-- fluid는 검색창크기 키우는 클래스 --}}
+            <input type="text" placeholder="Search..." name="query">
+            <button class="ui button" type="submit">Search</button>
+        </div>
+    </form>
+    {{#each words}}
+    {{!-- handlebars 의 each --}}
+    <div class="card flex-box">
+        <div class "flex-1 main-word">
+            <h1>{{this.word}}</h1>
+        </div>
+        {{!-- words를 나타내는 this  --}}
+        {{!-- 각 객체의 object를 사용 가능  --}}
+        {{!-- words.json의 word 가져오기 --}}
+        <div class="flex-1 word-list">
+            <ul>
+                {{#each this.definition}}
+                <li>{{this}}</li> 
+                    {{!-- definition 안에 있는 string --}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class= "delete-btn" onclick="deleteWord(this, '{{this.word}}')">
+            {{!-- this : 현재 있는 div 객체를 보내줌
+            x를 누른 키워드 word가 선택됨
+            deleteWord(this, '{{eat}}') --}}
+            <div>X</div>
+        </div>
+    </div>
+    {{/each}} 
+</div>
+<script>
+//Ajax는  웹 페이지의 일부분만을 갱신할 수 있게 해 줌 (대표적 : jquery)
+
+    const deleteWord = (el,word)=>{
+        $.ajax("/",{ // 클라이언트가 HTTP 요청을 보낼 서버의 url 주소
+            method : "DELETE",
+            data:{
+                word:word,
+            }
+        })
+        // x 누르자마자 바로 삭제
+        // el에 parent 노드로 가서 지워줌
+        console.log('HI')
+        let p = el.parentNode.parentNode;
+        let c = el.parentNode;
+        p.removeChild(c);
+    }
+
+</script>
