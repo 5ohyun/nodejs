@@ -4,7 +4,7 @@
   "description": "this is my nodejs tutorial",
   "main": "nodejs_1.js",
   "scripts": {
-    "dev": "nodemon nodejs_13.js -e js,json,hbs" 
+    "dev": "nodemon nodejs_14.js -e js,json,hbs" 
   },
   "repository": {
     "type": "git",

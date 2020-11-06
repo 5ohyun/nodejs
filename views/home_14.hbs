@@ -1,0 +1,22 @@
+<div class="ui main text container">
+    <h1 class="ui header">Semantic UI Fixed Template</h1>
+    {{#each words}}
+    {{!-- handlebars 의 each --}}
+    <div class="card flex-box">
+        <div class "flex-1 main-word">
+            <h1>{{this.word}}</h1>
+        </div>
+        {{!-- words를 나타내는 this  --}}
+        {{!-- 각 객체의 object를 사용 가능  --}}
+        {{!-- words.json의 word 가져오기 --}}
+        <div class="flex-1 word-list">
+            <ul>
+                {{#each this.definition}}
+                <li>{{this}}</li> 
+                    {{!-- definition 안에 있는 string --}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/each}} 
+</div>
